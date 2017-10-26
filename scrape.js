@@ -1,8 +1,20 @@
-var request = require('request');
+/** @module scrape.js */
+
+
+var fetch = require('node-fetch');
 var cheerio = require('cheerio');
 
-request('http://www.imdb.com/find?ref_=nv_sr_fn&q=julia+roberts&s=all.com', function (error, response, html) {
-  if (!error && response.statusCode == 200) {
-    console.log(html);
-  }
-});
+const BASE_URL = 'https://amazon.com/';
+
+/* gets HTML data from page using node-fetch, parses with cheerio */
+
+const getData = (itemNumber) => {
+  fetch(`${BASE_URL}/${itemNumber}`)
+    .then(function(res) {
+        return res.text();
+    }).then(function(body) {
+        const $ = cheerio.load(body);
+        console.log(`'title:', ${title}.text()`);
+    });
+    .catch(console.error)
+}
