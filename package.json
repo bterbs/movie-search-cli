@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^1.7.3",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "jsdoc": "^3.5.5"
