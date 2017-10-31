@@ -23,9 +23,16 @@ request(options, function (error, response, html) {
     console.error(`got non-200 response status: ${response.statusCode}`)
     process.exit(1)
   }
-  const $ = cheerio.load(html);
-  $('td.result_text').each((i, element) => {
-    var a = $(this);
-    console.log(a.text());
-  });
+    var $ = cheerio.load(html);
+    const results = [];
+    $('td.result_text').each(function(i, element){
+      var a = $(this);
+      results.push([a.text()]);
+    });
+    const final = []
+    results.forEach((result) => {
+      final.push(result[0].split(' ').slice(0,6).join(' '));
+    })
+
+    final.forEach((result) => {console.log(result)})
 });
